@@ -1,71 +1,103 @@
 # Instalação
 
-## Requisitos
+O repositório distribui as dez skills como um único plugin chamado **Advocacia Brasil**. Também gera pacotes individuais para contas que aceitam somente upload de skills.
 
-- Conta Claude Free, Pro, Max, Team ou Enterprise com Skills disponíveis.
-- **Code execution and file creation** habilitado.
-- Um ZIP por skill, gerado pela versão atual deste repositório.
+## Claude Code — marketplace pelo GitHub
 
-## Claude Web
+O repositório é privado. Antes de instalar, confirme que o Git usado pelo Claude Code possui acesso a `Matheus2306/claude-advocacia-brasil`.
 
-1. Acesse `https://claude.ai/`.
-2. Em contas individuais, abra **Settings > Capabilities**.
-3. Ative **Code execution and file creation**.
-4. Abra **Customize > Skills**.
-5. Clique em **+ > Create skill > Upload a skill**.
-6. Selecione um ZIP da pasta `dist/`.
-7. Ative a skill e repita para as demais.
+Dentro do Claude Code:
 
-## Claude Desktop
+```text
+/plugin marketplace add Matheus2306/claude-advocacia-brasil
+/plugin install advocacia-brasil@advocacia-brasil-marketplace
+/reload-plugins
+```
 
-1. Atualize o aplicativo.
-2. Entre na mesma conta utilizada no navegador.
-3. Confirme que a capacidade de execução e arquivos está ativa.
-4. Abra **Customize > Skills**.
-5. Envie e ative os ZIPs.
+Teste uma skill:
 
-As skills habilitadas na conta ficam disponíveis no chat Web e no Desktop. A interface pode variar conforme plano, sistema operacional e versão.
+```text
+/advocacia-brasil:pesquisa-juridica-brasileira
+```
 
-## Team e Enterprise
+Para atualizar:
 
-Um proprietário da organização pode:
+```text
+/plugin marketplace update advocacia-brasil-marketplace
+```
 
-- provisionar uma skill para todos;
-- compartilhar skills na organização;
-- agrupar skills em plugin e atribuir a grupos específicos.
+Depois, confirme a versão do plugin no gerenciador `/plugin`.
 
-Antes da distribuição:
+## Teste local no Claude Code
 
-1. teste em uma conta controlada;
-2. revise segurança e sigilo;
-3. aprove a versão;
-4. registre responsável e data;
-5. mantenha procedimento de rollback.
+Na pasta do repositório:
 
-## Atualização
+```bash
+claude plugin validate .
+claude plugin validate ./plugins/advocacia-brasil
+claude --plugin-dir ./plugins/advocacia-brasil
+```
 
-Skills instaladas manualmente não devem ser presumidas como sincronizadas com o GitHub. Ao publicar uma versão:
+## Claude Web e Desktop — Team ou Enterprise
 
-1. gere novos ZIPs;
-2. registre alterações;
-3. teste;
-4. substitua a skill no Claude;
-5. confirme o comportamento com prompts de validação.
+O proprietário da organização pode criar um marketplace interno:
+
+1. Habilite **Cowork** e **Skills** na organização.
+2. Abra **Organization settings > Plugins**.
+3. Selecione **Add plugin > GitHub**.
+4. Informe `Matheus2306/claude-advocacia-brasil`.
+5. Confirme que o Claude GitHub App tem acesso ao repositório.
+6. Aguarde a sincronização e defina a preferência do plugin:
+   - disponível para instalação;
+   - instalado por padrão;
+   - obrigatório;
+   - não disponível.
+
+O repositório usado na sincronização organizacional deve permanecer privado ou interno. A atualização pode ser manual ou automática, conforme as permissões configuradas.
+
+## Upload manual do plugin
+
+Gere os pacotes:
+
+```bash
+python scripts/validate_and_package.py
+```
+
+Envie `dist/advocacia-brasil.zip` ao marketplace da organização em **Organization settings > Plugins > Add plugins > Upload a file**.
+
+O pacote deve ter menos de 50 MB. Um novo upload com o mesmo nome substitui a versão anterior.
+
+## Contas com upload individual de skills
+
+Quando a interface disponibilizar **Customize > Skills > Upload a skill**, use os dez ZIPs individuais de `dist/`, ignorando `advocacia-brasil.zip`.
+
+As skills associadas à conta ficam disponíveis no Claude Web e Desktop conforme o plano e as capacidades habilitadas.
+
+## Atualização e versionamento
+
+Ao publicar uma versão:
+
+1. altere `version` em `.claude-plugin/marketplace.json`;
+2. altere a mesma versão em `plugins/advocacia-brasil/.claude-plugin/plugin.json`;
+3. valide e gere os pacotes;
+4. publique as alterações;
+5. atualize ou sincronize o marketplace;
+6. execute os prompts de teste.
 
 ## Problemas frequentes
 
-### A skill não aparece
+### Marketplace não carrega
 
-- Confirme que Code execution está habilitado.
-- Verifique se o ZIP contém a pasta da skill e, dentro dela, `SKILL.md`.
-- Confirme que pasta e campo `name` possuem o mesmo nome.
+- Confirme a existência de `.claude-plugin/marketplace.json`.
+- Verifique o acesso ao repositório privado.
+- Execute `claude plugin validate .`.
 
-### A skill não é acionada
+### Plugin aparece, mas as skills não
 
-- Verifique se ela está ativada.
-- Peça explicitamente: “Use a skill `nome-da-skill`”.
-- Revise a descrição do frontmatter para evitar sobreposição.
+- Confirme que as pastas estão em `plugins/advocacia-brasil/skills/`.
+- Execute `/reload-plugins`.
+- Verifique os erros no gerenciador `/plugin`.
 
 ### A skill de prazos não lembra tarefas
 
-Abra um Projeto/Cowork com `controle-de-prazos.md` ou anexe o arquivo na conversa. Uma conversa sem estado persistente não garante memória entre sessões.
+Abra um Projeto ou Cowork com `controle-de-prazos.md`, ou anexe o arquivo na conversa. Uma conversa sem estado persistente não garante memória entre sessões.
