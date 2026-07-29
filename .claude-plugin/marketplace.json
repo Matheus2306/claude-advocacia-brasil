@@ -1,0 +1,33 @@
+{
+  "name": "advocacia-brasil-marketplace",
+  "owner": {
+    "name": "Matheus Felipe Rodrigues",
+    "url": "https://github.com/Matheus2306"
+  },
+  "description": "Marketplace de ferramentas para o cotidiano da advocacia brasileira.",
+  "version": "1.0.0",
+  "plugins": [
+    {
+      "name": "advocacia-brasil",
+      "displayName": "Advocacia Brasil",
+      "source": "./plugins/advocacia-brasil",
+      "description": "Dez skills para pesquisa, estratégia, elaboração e revisão de peças e gestão de prazos na advocacia brasileira.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Matheus Felipe Rodrigues",
+        "url": "https://github.com/Matheus2306"
+      },
+      "homepage": "https://github.com/Matheus2306/claude-advocacia-brasil",
+      "repository": "https://github.com/Matheus2306/claude-advocacia-brasil",
+      "license": "MIT",
+      "category": "legal",
+      "tags": [
+        "advocacia",
+        "direito-brasileiro",
+        "pesquisa-juridica",
+        "peticoes",
+        "prazos"
+      ]
+    }
+  ]
+}
