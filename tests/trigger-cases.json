@@ -1,0 +1,94 @@
+{
+  "skills": {
+    "triagem-estrategia-juridica": {
+      "positive": [
+        "Recebi um caso novo de inadimplemento contratual. Organize os fatos e riscos.",
+        "Quais estratégias temos antes de ajuizar a ação?"
+      ],
+      "negative": [
+        "Revise somente a gramática desta petição já pronta."
+      ]
+    },
+    "pesquisa-juridica-brasileira": {
+      "positive": [
+        "Pesquise a jurisprudência atual do STJ sobre esta cláusula.",
+        "Verifique se esta lei continua vigente."
+      ],
+      "negative": [
+        "Organize estes comprovantes em ordem cronológica sem fazer pesquisa."
+      ]
+    },
+    "organizar-fatos-provas": {
+      "positive": [
+        "Monte uma cronologia a partir destes e-mails e contratos.",
+        "Relacione cada alegação à prova disponível."
+      ],
+      "negative": [
+        "Calcule o prazo desta intimação."
+      ]
+    },
+    "elaborar-peticao-inicial": {
+      "positive": [
+        "Elabore uma inicial de cobrança usando os anexos.",
+        "Prepare a petição inicial e a tutela de urgência."
+      ],
+      "negative": [
+        "Faça contrarrazões ao recurso da parte adversa."
+      ]
+    },
+    "elaborar-defesa-processual": {
+      "positive": [
+        "Prepare a contestação representando a empresa ré.",
+        "Analise preliminares e reconvenção."
+      ],
+      "negative": [
+        "Prepare o cumprimento de sentença."
+      ]
+    },
+    "elaborar-replica-manifestacao": {
+      "positive": [
+        "Responda à contestação e aos documentos novos.",
+        "Elabore manifestação sobre o laudo pericial."
+      ],
+      "negative": [
+        "Faça a primeira triagem deste cliente."
+      ]
+    },
+    "elaborar-recurso-juridico": {
+      "positive": [
+        "Analise o cabimento de apelação contra esta sentença.",
+        "Prepare contrarrazões ao agravo."
+      ],
+      "negative": [
+        "Organize a agenda de prazos de hoje."
+      ]
+    },
+    "execucao-cumprimento-sentenca": {
+      "positive": [
+        "Prepare o cumprimento definitivo desta sentença.",
+        "Verifique excesso de execução e inexigibilidade."
+      ],
+      "negative": [
+        "Crie uma petição inicial de conhecimento."
+      ]
+    },
+    "revisar-peca-juridica": {
+      "positive": [
+        "Audite esta peça antes do protocolo.",
+        "Aponte erros, riscos e pedidos ausentes nesta contestação."
+      ],
+      "negative": [
+        "Pesquise do zero a legislação aplicável ao caso."
+      ]
+    },
+    "gerenciar-prazos-providencias": {
+      "positive": [
+        "Registre estes três prazos e defina prazo interno.",
+        "O que eu tenho para fazer hoje?"
+      ],
+      "negative": [
+        "Redija o mérito completo de uma apelação."
+      ]
+    }
+  }
+}
